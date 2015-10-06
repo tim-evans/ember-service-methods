@@ -1,7 +1,7 @@
 {
   "name": "ember-service-methods",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.1.0",
+  "description": "Syntatic sugar for Ember services that consist of a stateless method",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/tim-evans/ember-service-methods",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Tim Evans <tim.c.evans@me.com>",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
