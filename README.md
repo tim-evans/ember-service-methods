@@ -35,6 +35,8 @@ export default Ember.Route.extend({
 
 This may seem overly complicated to do this simple request. I feel that this pattern works best with testing. Mocking out full API responses to actions can be complicated an error prone. With this pattern along with the built-in test helpers, these methods can be stubbed out for simpler implementations.
 
+This is an implementation of https://github.com/emberjs/rfcs/pull/98
+
 ## Installation
 
 * `git clone` this repository
