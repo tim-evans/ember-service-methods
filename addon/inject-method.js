@@ -28,7 +28,7 @@ export default function (name) {
     assert('Attempting to lookup an injected method on an object without a container, ensure that the object was instantiated via a container.', this.container);
 
     let service = this.container.lookup('service:' + (name || methodName));
-    return service.method.apply(service, args);
+    return service.execute.apply(service, args);
   };
 
   return method;
