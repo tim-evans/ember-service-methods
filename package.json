@@ -1,6 +1,6 @@
 {
   "name": "ember-service-methods",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "Syntatic sugar for Ember services that consist of a stateless method",
   "directories": {
     "doc": "doc",
