@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import injectMethod from 'ember-service-methods/inject-method';
+import method from 'ember-service-methods/inject';
 
 export default Ember.Component.extend({
-  greet: injectMethod()
+  greet: method()
 });

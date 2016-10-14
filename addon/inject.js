@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { assert } = Ember;
+const { assert, getOwner } = Ember;
 
 function lookupMethodName(object, method) {
   let methodNameCache = object._methodNameCache;
@@ -10,7 +10,7 @@ function lookupMethodName(object, method) {
 
   let methodName = methodNameCache.get(method);
   if (methodName == null) {
-    for (var key in object) {
+    for (let key in object) {
       if (object[key] === method) {
         methodNameCache.set(method, key);
         methodName = key;
@@ -24,15 +24,9 @@ function lookupMethodName(object, method) {
 export default function (name) {
   var method = function (...args) {
     let methodName = lookupMethodName(this, method);
-    let owner;
+    let owner = getOwner(this);
 
-    if (Ember.getOwner) {
-      owner = Ember.getOwner(this);
-      assert('Attempting to lookup an injected method on an object without an owner, ensure that the object was instantiated properly with an owner.', owner);
-    } else {
-      owner = this.container;
-      assert('Attempting to lookup an injected method on an object without a container, ensure that the object was instantiated via a container.', this.container);
-    }
+    assert('Attempting to lookup an injected method on an object without an owner, ensure that the object was instantiated properly with an owner.', owner);
 
     let service = owner.lookup('service:' + (name || methodName));
     return service.execute.apply(service, args);

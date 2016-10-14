@@ -4,7 +4,7 @@
 
 ```javascript
 import Ember from 'ember';
-import method from 'ember-service-methods/method';
+import method from 'ember-service-methods';
 
 const { get } = Ember;
 
@@ -17,10 +17,10 @@ export default method(function (invoice, { to, subject }) {
 
 ```javascript
 import Ember from 'ember';
-import injectMethod from 'ember-service-methods/inject-method';
+import method from 'ember-service-methods/inject';
 
 export default Ember.Route.extend({
-  emailInvoice: injectMethod(),
+  emailInvoice: method(),
 
   actions: {
     sendEmail(to, subject) {
@@ -39,17 +39,19 @@ This is an implementation of https://github.com/emberjs/rfcs/pull/98
 
 ## Installation
 
-* `git clone` this repository
+* `git clone https://github.com/tim-evans/ember-service-methods.git`
+* `cd ember-service-methods`
 * `npm install`
 * `bower install`
 
 ## Running
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember serve`
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ## Running Tests
 
+* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
 * `ember test`
 * `ember test --server`
 
@@ -57,4 +59,4 @@ This is an implementation of https://github.com/emberjs/rfcs/pull/98
 
 * `ember build`
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
