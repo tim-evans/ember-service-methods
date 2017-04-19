@@ -1,5 +1,7 @@
 # ember-service-methods
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tim-evans/ember-service-methods.svg)](https://greenkeeper.io/)
+
 `ember-service-methods` is an addon that formalizes a pattern that I've used in several larger Ember applications. Some user interactions are inherently complicated and have a lot of business logic around them. These interactions can usually be described in simple terms. For example "Send the invoice to the email given". Using this addon, this interaction could be represented by a service method:
 
 ```javascript
