@@ -3,23 +3,24 @@
 `ember-service-methods` is an addon that formalizes a pattern that I've used in several larger Ember applications. Some user interactions are inherently complicated and have a lot of business logic around them. These interactions can usually be described in simple terms. For example "Send the invoice to the email given". Using this addon, this interaction could be represented by a service method:
 
 ```javascript
-import Ember from 'ember';
+import { get } from '@ember/object';
 import method from 'ember-service-methods';
 
-const { get } = Ember;
-
 export default method(function (invoice, { to, subject }) {
-  return Ember.$.post(`/invoices/${get(invoice, 'id')}/email`, {
-    subject
+  return fetch(`/invoices/${get(invoice, 'id')}/email`, {
+    method: 'POST',
+    data: {
+      subject
+    }
   });
 });
 ```
 
 ```javascript
-import Ember from 'ember';
-import method from 'ember-service-methods/inject';
+import Route from '@ember/routing/route';
+import { inject as method } from 'ember-service-methods';
 
-export default Ember.Route.extend({
+export default Route.extend({
   emailInvoice: method(),
 
   actions: {
