@@ -1,5 +1,6 @@
-import Ember from 'ember';
+import Service from '@ember/service';
+export { default as inject } from './inject';
 
 export default function (method) {
-  return Ember.Service.extend({ execute: method });
+  return Service.extend({ execute: method });
 }

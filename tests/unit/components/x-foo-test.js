@@ -1,11 +1,25 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import hbs from 'ember-cli-htmlbars-inline-precompile';
 
-moduleForComponent('x-foo', 'inject.method', {
-  integration: false,
-  needs: ['service:greet']
-});
+import '@ember/test-helpers';
 
-test('inject-method', function(assert) {
-  let component = this.subject();
-  assert.equal(component.greet('Tom'), 'Hi Tom');
+module('inject.method', function (hooks) {
+  setupRenderingTest(hooks);
+
+  test('inject-method', async function (assert) {
+    this.set('oninit', (component) => {
+      assert.equal(component.greet('Tom'), 'Hi Tom');
+    });
+
+    this.render(hbs`{{x-foo oninit=oninit}}`);
+  });
+
+  test('inject-method from root', async function (assert) {
+    this.set('oninit', (component) => {
+      assert.equal(component.greet('Zoey'), 'Hi Zoey');
+    });
+
+    this.render(hbs`{{x-bar oninit=oninit}}`);
+  });
 });

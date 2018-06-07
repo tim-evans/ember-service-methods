@@ -1,11 +1,10 @@
-import Ember from 'ember';
-
-const { assert, getOwner } = Ember;
+import { assert } from '@ember/debug';
+import { getOwner } from '@ember/application';
 
 function lookupMethodName(object, method) {
   let methodNameCache = object._methodNameCache;
   if (methodNameCache == null) {
-    methodNameCache = object._methodNameCache = Ember.Map.create();
+    methodNameCache = object._methodNameCache = new WeakMap();
   }
 
   let methodName = methodNameCache.get(method);

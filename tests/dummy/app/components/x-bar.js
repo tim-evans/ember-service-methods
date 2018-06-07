@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import method from 'ember-service-methods/inject';
+import { inject as method } from 'ember-service-methods';
 
 export default Component.extend({
   greet: method(),
