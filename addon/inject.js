@@ -8,11 +8,14 @@ function lookupMethodName(object, method) {
   }
 
   let methodName = methodNameCache.get(method);
-  if (methodName == null) {
-    for (let key in object) {
-      if (object[key] === method) {
+  while ((object = Object.getPrototypeOf(object)) && methodName == null) {
+    let keys = Object.getOwnPropertyNames(object);
+    for (let key of keys) {
+      let descriptor = Object.getOwnPropertyDescriptor(object, key);
+      if (descriptor.value === method) {
         methodNameCache.set(method, key);
         methodName = key;
+        break;
       }
     }
   }
